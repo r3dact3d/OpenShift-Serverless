@@ -5,7 +5,7 @@ Install Red Hat OpenShift Serverless
 oc apply -f openshift-serverless.yaml
 ----
 
-Validate 
+Validate Serverless Phase
 ----
 oc get csv -n openshift-serverless
 ----
@@ -19,3 +19,15 @@ Validate Knative Serving
 ----
 oc get knativeserving.operator.knative.dev/knative-serving -n knative-serving --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'
 ----
+
+Install Knative Eventing
+----
+oc apply -f eventing.yaml
+----
+
+Validate Knative Eventing
+----
+oc get knativeeventing.operator.knative.dev/knative-eventing -n knative-eventing --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'
+----
+
+

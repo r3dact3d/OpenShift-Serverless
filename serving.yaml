@@ -4,5 +4,8 @@ metadata:
   name: knative-serving
   namespace: knative-serving
 spec:
+  controller-custom-certs:    #If registry uses self-signed cert 
+    name: config-service-ca 
+    type: ConfigMap           #Secret or ConfigMap, needs to be in this project
   high-availability:
-    replicas: 1 #HA disabled; +1 to enable HA
+    replicas: 1               #HA disabled; >1 to enable HA

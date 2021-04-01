@@ -1,5 +1,8 @@
 apiVersion: operator.knative.dev/v1alpha1
 kind: KnativeServing
 metadata:
-    name: knative-serving
-    namespace: knative-serving
+  name: knative-serving
+  namespace: knative-serving
+spec:
+  high-availability:
+    replicas: 1 #HA disabled; +1 to enable HA

@@ -2,7 +2,7 @@
 
 Install Red Hat OpenShift Serverless
 ----
-oc apply -f openshift-serverless.yaml
+oc apply -f serverless-operator.yaml
 ----
 
 Validate Serverless Phase

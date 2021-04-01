@@ -7,7 +7,7 @@ spec:
   template:
     spec:
       containers:
-      - image: quay.io/openshift-knative/knative-eventing-sources-event-display:latest
+      - image: openshift/hello-openshift
         env:
         - name: RESPONSE
-          value: "Hello Serverless!"
+          value: "Hello Peoples!"

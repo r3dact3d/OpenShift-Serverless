@@ -30,4 +30,12 @@ Validate Knative Eventing
 oc get knativeeventing.operator.knative.dev/knative-eventing -n knative-eventing --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'
 ----
 
+Create simple Hello Peoples serverless app in default namespace
+----
+oc apply -f hello-serverless.yaml
+----
 
+Test serverless app
+----
+curl `oc get ksvc -n default --no-headers | awk '{print $2}'`
+----

@@ -37,4 +37,9 @@ spec:
   high-availability:
     replicas: 1               #HA disabled; >1 to enable HA
     
-    
+---
+apiVersion: operator.knative.dev/v1alpha1
+kind: KnativeEventing
+metadata:
+  name: knative-eventing
+  namespace: knative-eventing    

@@ -1,4 +1,14 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  annotations:
+    olm.providedAPIs: KnativeEventing.v1alpha1.operator.knative.dev,KnativeKafka.v1alpha1.operator.serverless.openshift.io,KnativeServing.v1alpha1.operator.knative.dev
+  name: openshift-serverless-2pj2j
+  namespace: openshift-serverless
+spec: {}
 
+---
 apiVersion: operators.coreos.com/v1alpha1
 kind: Subscription
 metadata:

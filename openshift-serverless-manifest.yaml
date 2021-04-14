@@ -1,0 +1,11 @@
+project: default
+source:
+  repoURL: 'https://github.com/r3dact3d/OpenShift-Serverless'
+  path: openshift-serverless
+  targetRevision: main
+destination:
+  server: 'https://kubernetes.default.svc'
+  namespace: openshift-serverless
+syncPolicy:
+  syncOptions:
+    - CreateNamespace=true

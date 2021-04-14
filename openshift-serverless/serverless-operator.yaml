@@ -3,6 +3,7 @@ apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
   annotations:
+   argocd.argoproj.io/sync-wave: "0"
     olm.providedAPIs: KnativeEventing.v1alpha1.operator.knative.dev,KnativeKafka.v1alpha1.operator.serverless.openshift.io,KnativeServing.v1alpha1.operator.knative.dev
   name: openshift-serverless-2pj2j
   namespace: openshift-serverless
@@ -16,6 +17,8 @@ metadata:
   namespace: openshift-serverless
   labels:
     operators.coreos.com/serverless-operator.openshift-serverless: ''
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   channel: '4.7'
   installPlanApproval: Automatic
@@ -30,6 +33,8 @@ kind: KnativeServing
 metadata:
   name: knative-serving
   namespace: knative-serving
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   controller-custom-certs:    #If registry uses self-signed cert 
     name: config-service-ca 
@@ -43,3 +48,5 @@ kind: KnativeEventing
 metadata:
   name: knative-eventing
   namespace: knative-eventing    
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"

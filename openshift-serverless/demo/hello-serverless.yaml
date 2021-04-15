@@ -21,13 +21,4 @@ spec:
           value: "hello"
         #- name: RESPONSE
         #  value: "Hello Peoples!"
-    traffic:
-    - tag: current
-      revisionName: greeter-yaml-hola
-      percent: 50
-    - tag: prev
-      revisionName: greeter-yaml-hello
-      percent: 50
-    - tag: latest
-      latestRevision: true
-      persent: 0
+

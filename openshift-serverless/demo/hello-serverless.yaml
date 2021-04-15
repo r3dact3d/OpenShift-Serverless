@@ -14,11 +14,8 @@ spec:
     spec:
       containerConcurrency: 100
       containers:
-      #- image: openshift/hello-openshift
-      - image: quay.io/rhdevelopers/knative-tutorial-greeter:quarkus
+      - image: openshift/hello-openshift
         env:
-        - name: MESSAGE_PREFIX
-          value: "hello"
-        #- name: RESPONSE
-        #  value: "Hello Peoples!"
+        - name: RESPONSE
+          value: "Hello Peoples!"
 

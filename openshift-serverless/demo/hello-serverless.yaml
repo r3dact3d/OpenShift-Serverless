@@ -5,9 +5,29 @@ metadata:
   namespace: default
 spec:
   template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "0"
+        autoscaling.knative.dev/maxScale: "3"
+        autoscaling.knative.dev/target: 1
+      name: hello-peeps
     spec:
+      containerConcurrency: 100
       containers:
-      - image: openshift/hello-openshift
+      #- image: openshift/hello-openshift
+      - image: quay.io/rhdevelopers/knative-tutorial-greeter:quarkus
         env:
-        - name: RESPONSE
-          value: "Hello Peoples!"
+        - name: MESSAGE_PREFIX
+          value: "hello"
+        #- name: RESPONSE
+        #  value: "Hello Peoples!"
+    traffic:
+    - tag: current
+      revisionName: greeter-yaml-hola
+      percent: 50
+    - tag: prev
+      revisionName: greeter-yaml-hello
+      percent: 50
+    - tag: latest
+      latestRevision: true
+      persent: 0

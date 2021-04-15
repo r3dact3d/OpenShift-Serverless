@@ -7,15 +7,24 @@ spec:
   template:
     metadata:
       annotations:
-        autoscaling.knative.dev/minScale: "0"
-        autoscaling.knative.dev/maxScale: "3"
-        autoscaling.knative.dev/target: "1"
-      name: hello-peeps
+        autoscaling.knative.dev/maxScale: '3'
+        autoscaling.knative.dev/minScale: '0'
+        autoscaling.knative.dev/target: '1'
     spec:
       containerConcurrency: 100
       containers:
-      - image: openshift/hello-openshift
-        env:
-        - name: RESPONSE
-          value: "Hello Peoples!"
-
+        - env:
+            - name: RESPONSE
+              value: Hello Peoples!
+          image: openshift/hello-openshift
+          name: user-container
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+      enableServiceLinks: false
+      timeoutSeconds: 300
+  traffic:
+    - latestRevision: true
+      percent: 100

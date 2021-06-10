@@ -5,7 +5,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ArgoCD
 metadata:
   name: argocd-test-demo
-  namespace: tester-test
+  namespace: dev-test
 spec:
   server:
     route:

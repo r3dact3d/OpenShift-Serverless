@@ -2,4 +2,24 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: demo-knative-helloworld
+  name: demo
+  
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: argocd-test-demo
+  namespace: demo
+spec:
+  server:
+    route:
+      enabled: true
+  dex:
+    openShiftOAuth: true
+    image: quay.io/ablock/dex
+    version: openshift-connector
+  rbac:
+    defaultPolicy: role.admin
+    policy: |
+      g, system:cluster-admins, role:admin
+
